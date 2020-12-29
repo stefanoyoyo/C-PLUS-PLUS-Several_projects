@@ -1,0 +1,61 @@
+#include <stdlib.h>
+#include <string.h>
+
+void show(char s[]);
+void getIntInto (int n);
+void menu();
+void intro ();
+void choices();
+
+
+int main (char args[],int n) {
+	show("Welcome in the very first C++ program created by this application\n\nPress any number then enter to continue");
+	
+	show("\n\n");
+	
+	int value = 0;
+   //  scanf("%i",&value); // Funziona
+   value = getIntInto (value);       // Funziona!
+   
+	if (value == 1|| value== 2 || value== 3 || value== 4 || value== 5 || value== 6 || value== 7 || value== 8 || value== 9 || value== 0)
+	{
+ 	printf("%d",value);
+  menu();
+ 
+	}
+	
+	return 0;
+}
+void show (char s[]) {
+	printf("%s",s);
+}
+
+void getIntInto (int n) {
+	scanf("%d",&n);
+}
+
+void intro () {
+	show("This is a little C++ program. Tonight, my grandma died so i guess it could regard her \nIT WILL CONTAIN THE IDEAS I COULD PRACTICE TO REMEMBER HER DEATH\n\n");
+}
+
+void menu() {
+	int choice = 0;
+	intro();
+	choices();
+	getIntInto(choice);
+	if (choice == 1) {
+		show("1444");
+	}
+	
+}
+
+void choices() {
+	show("1) Sony vegas video\n"
+	     "2) Collection of photoshop pics\n"
+	     "3) Arduino circuit (naaaaah)\n"
+	     "4) A Little android app (naah none "
+	     "will use it, i'm quite sure)\n "
+	     "5) I DUNNO WHAT ELSE \n");
+	     
+	    
+}

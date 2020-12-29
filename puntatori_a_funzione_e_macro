@@ -1,0 +1,52 @@
+/*
+RITORNO UNA STRINGA INSERITA DA QUALCUNO
+*/
+char *input  () {
+	char input[30];
+	scanf("%s",input);
+	return *input;
+}
+
+/*
+STAMPO UNA STRINGA PRESENTE AD UN INDIRIZZO IN MEMORIA E NON IN UNA VARIABILE
+stampo i caratteri andando avanti di 
+*/
+int printArray(char *p, int dim) {
+     char *p0 = p;
+     int i;
+     for (i =0; i< dim; i++) {
+     	printf("%c",p0);
+     }
+     printf("%s\n","");
+     return dim;
+}
+
+/*
+Verifico se 2 stringhe sono uguali
+*/
+int equal(char s1[],char s2[]) {
+	int i = 0;
+	int result = 1;
+    while (s1[i]!='\0' && s2[i] != '\0'){
+    	if (s1[i] != s2[i]) {
+    		result = 0;
+    		break;
+    	}
+    	}
+    	return result;
+}
+
+
+
+void main () {
+	char a[30];
+	char *p = &a[0];
+    *p = input();
+   printArray(*p, (sizeof(a)/sizeof(0)));
+   char *pstringa = "123"; //modo comodo di dichiarare le stringhe senza dare una dimensione fissa (All'array di char che la conterrà)
+   printf("pstringa -> %s\n",pstringa);
+   char v[3]="123";
+   int *pint = 3;
+    
+
+}

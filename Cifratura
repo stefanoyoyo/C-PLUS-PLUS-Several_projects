@@ -1,0 +1,18 @@
+void makeKey(char parola[], char key[]) {
+	int l = strlen(parola);
+	int lk = strlen(key);
+	printf("DIMENSIONE PAROLA: %d\n",l);
+	printf("DIMENSIONE CHIAVE: %d\n",lk);
+
+	int *p = malloc(l,sizeof(char));
+	if (*p == 0) {
+		printf("ERROR");
+	}
+	char *ptest = "ciao";
+	strcpy(p,ptest);
+	printf("%s", "(");
+}
+
+void main () {
+	makeKey("ciao","ciao");
+}

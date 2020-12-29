@@ -1,0 +1,115 @@
+/*
+typedef struct s  { 
+	int a;
+	int b;
+}; 
+struct s a;
+
+void main(){ 
+struct s *p=&a;
+	//	a.a = 3;
+	//	a->a =4;
+}  
+*/
+//
+//  main.c
+//  Stack
+//
+//  Created by paolo massazza on 22/03/17.
+//  Copyright Â© 2017 paolo massazza. All rights reserved.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+
+#undef N
+#define N 10
+#undef ERR
+#define ERR -1
+
+typedef unsigned ITEM;
+
+/*CREO UNA STRUTTURA E UN TIPO
+ogni nodo sarà una struttura contenente 
+l'elemento e un puntatore al nodo 
+siccessivo*/
+struct nodo {ITEM el; struct nodo * succ;};
+typedef struct nodo NODO;
+
+/*Questa struttura contiene un puntatore
+al primo elemento dello stack (lista)*/
+struct stack {struct nodo * top;};
+typedef struct stack STACK;
+
+/*Questa funzione inizializza lo stack
+ponendo a null il puntatore (STACK)che 
+punta al puntatore al primo elemento 
+dello stack*/
+void Init_stack(STACK * pt)
+{pt->top=NULL;}
+
+/*Questa funzione verifica se lo stack 
+è vuoto controllando se il suo primo
+elemento sia a null o meno. Se lo è 
+significa che lo stack è vuoto perche 
+se contenesse altri elementi, il primo
+nodo non sarebbe null ma conterre qualcosa*/
+int Is_empty(STACK * pt)
+{return (pt->top==NULL);}
+
+/*Questa funzione preso come parametro un
+puntatore al primo elemento dello stack, ritorna
+-1 nel caso il primo elemento non contenga nulla
+altrimenti ritorna il primo elemento dello stack*/
+ITEM Top(STACK * pt)
+{if (Is_empty(pt)) return ERR;
+else return pt->top->el;
+}
+
+/*Questa funzione permette l'inserimento all'interno
+dello stack, all'indirizzo specificato dal puntatore
+passato come parametro, un elemento sempre passato 
+come parametro. Se il puntatore punta a uno spazio 
+nello heap non contenente niente, si ritorna errore,
+altrimenti prendo l'elemento e lo metto in cima allo
+stack*/
+int Push(STACK * pt, unsigned el)
+{NODO * ptr;
+    if ((ptr=malloc(sizeof(NODO)))==NULL) return ERR;
+    else
+    {ptr->el=el;
+        ptr->succ=pt->top;
+        pt->top=ptr;
+        return 0;}
+}
+
+/*Questa funzione permette di rimuovere un elemento 
+presente all'indirizzo passato come parametro dallo 
+stack. Se lo stack è vuoto, si ritorna -1, altrimenti
+si procede con la rimozione*/
+int Pop(STACK * pt)
+{NODO * ptr;
+    if (Is_empty(pt)) return ERR;
+    else {ptr=pt->top; pt->top = pt->top->succ;
+        free(ptr); return 0;}
+}
+
+
+int main(void)
+{STACK *st; int i;
+    ITEM val;
+    st=malloc(sizeof(STACK));
+    Init_stack(st);
+    i=10;
+    while(i)
+    {printf("immetti un valore: ");
+        scanf("%u",&val);
+        printf("\n");
+        Push(st,val); i--;
+    }
+    while(!Is_empty(st))
+    {printf("%u\n",Top(st)); Pop(st);
+	}
+	getchar();
+    return 0;
+}

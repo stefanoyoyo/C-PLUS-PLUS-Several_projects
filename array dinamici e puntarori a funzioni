@@ -1,0 +1,29 @@
+static int array [1];
+
+void add (int n) {
+	int arr [(sizeof (array)/sizeof (0))+1];
+	int index = sizeof (arr);
+	printf("dimensione array %x dimensione arr %x\n",sizeof(array)/sizeof(int),sizeof(arr)/sizeof(int));
+	arr[index] = n;
+	printf("arr[%d] = %d",index,arr[index]);
+}
+
+int somma (int a, int b) {
+	return a + b;
+}
+
+void main () {
+	
+	int (*sum)(int a, int b);
+	sum = somma;
+	printf("indirizzo sum %p\n",sum);
+	++sum;
+	printf("indirizzo sum %p\n",sum);
+	for (int i =0; i< 3000; i++) {
+		sum = i;
+	++sum ;
+	}
+	printf("indirizzo sum %p\n",sum);
+	add(5);
+	
+}

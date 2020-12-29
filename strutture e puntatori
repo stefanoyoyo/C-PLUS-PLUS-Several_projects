@@ -1,0 +1,22 @@
+/*
+Questa struttura contiene un puntatore a una stringa che è il nome del cane. Se definisco un tipo cane e creo allo allo stesso momento la variabile ad essa associata "brisky", posso accedere ai campi della struttura solo creando un puntatore alla struttura
+*/
+struct cane {
+	char * nome;
+};
+typedef struct cane brisky;
+
+typedef struct gatto {
+	char * nome;
+};
+struct gatto micia;
+
+void main ( ) {
+     brisky * p;
+     p->nome = "pitty";
+//  brisky.nome = "pittino"; //non funziona
+
+//  gatto * q; // non lo posso fare perchè non creare un puntatore di tipo gatto.. non esiste un tipo gatto ma solo una struttura che si chiama gatto! posso peró creare un puntatore intero alla variabile micia della struttura gatto, senza avere un tipo! non posso comunque (ovviamente) accedere ai campi della struttura
+int * pointer = &micia;
+//pointer.nome = "micia";  //sbagliato
+}
